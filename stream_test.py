@@ -179,11 +179,11 @@ def tela_de_acesso():
 
     st.title("🔐 Identificação de Acesso")
 
-    # Aviso de privacidade — obrigatório pela LGPD
+    # Aviso de privacidade - obrigatório pela LGPD
     st.info(
         "**Por que pedimos seu email?**\n\n"
         "Seu email é usado **apenas** para controle de acesso e auditoria interna. "
-        "Armazenamos apenas um *hash* irreversível — nunca o email em texto claro. "
+        "Armazenamos apenas um *hash* irreversível - nunca o email em texto claro. "
         "Não compartilhamos com terceiros. Conforme LGPD Art. 9º."
     )
 
@@ -238,7 +238,7 @@ def _processar_acesso(email: str, consentimento: bool):
     email_hash = hash_email(email)
     gravar_log(email_hash, ip, "acesso")
 
-    # 5. Gravar na sessão (nunca o email puro — só o hash e o timestamp de início)
+    # 5. Gravar na sessão (nunca o email puro - só o hash e o timestamp de início)
     st.session_state["autenticado"] = True
     st.session_state["email_hash"] = email_hash
     st.session_state["inicio_sessao"] = time.time()
@@ -252,7 +252,7 @@ def _processar_acesso(email: str, consentimento: bool):
 # ──────────────────────────────────────────────
 
 def tela_principal():
-    """Conteúdo da aplicação — só acessível após identificação."""
+    """Conteúdo da aplicação - só acessível após identificação."""
 
     email_hash = st.session_state.get("email_hash", "?")
     inicio = st.session_state.get("inicio_sessao", time.time())
